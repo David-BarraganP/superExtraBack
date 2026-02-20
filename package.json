@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server",
-    "dev": "nodemon src/server"
+    "dev": "nodemon src/server",
+    "reset:migrate": "node ./src/tests/testMigrate.js",
+    "test": "jest --detectOpenHandles",
+    "pretest": "npm run reset:migrate"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +25,8 @@
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "jest": "^25.0.0",
+    "nodemon": "^3.1.11",
+    "supertest": "7.2.2"
   }
 }
