@@ -1,4 +1,5 @@
 // Controlador de productos: maneja filtros, creación, obtención, actualización y eliminación
+// importaciones
 const catchError = require('../utils/catchError');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
@@ -8,7 +9,6 @@ const getAll = catchError(async(req, res) => {
 
     // Permite filtrar productos por categoría usando query params
     const {category} = req.query
-
     const where = {}
     if(category) where.categoryId = category
 

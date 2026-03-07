@@ -1,12 +1,16 @@
+// importaciones
 const request = require("supertest")
 const app = require('../app')
 
+// definir las rutas
 const BASE_URL = '/users'
+
+// variables globales
 let TOKEN 
 let userId
 
 
-
+// Objeto que representa un usuario 
 const user = {
     userName: 'Alejandro',
     email: 'alejandro@gmail.com',
@@ -14,7 +18,8 @@ const user = {
     rol: 'colaborador'
 }
 
-
+// Se ejecuta antes de todos los tests
+// Realiza un login para obtener un token válido
 beforeAll(async()=>{
     const user = {
         email: "jose@gmail.com",
@@ -29,8 +34,8 @@ beforeAll(async()=>{
 })
 
 
-
-
+// Test para obtener  los usuarios
+// Verifica que la respuesta sea 200 y que exista un usuario
 test("Get -> 'BASE_URL/users', should return status code 200, res.body to be defined and res.body.length === 1", async () => {
     const res = await request(app)
 
@@ -45,9 +50,10 @@ test("Get -> 'BASE_URL/users', should return status code 200, res.body to be def
 })
 
 
+// Test para crear un  usuario
+// Verifica que se cree correctamente y que el nombre coincida
 test("Post -> 'BASE_URL', should return status code 201, and res.body to be defined and res.body.userName === user.userName", async () => {
     const res = await request(app)
-
         .post(BASE_URL)
         .send(user)
 
@@ -58,6 +64,9 @@ test("Post -> 'BASE_URL', should return status code 201, and res.body to be defi
     expect(res.body.userName).toBe(user.userName)
 })
 
+
+// Test para actualizar un usuario por su id
+// Cambia el nombre y verifica que la actualización sea correcta
 test("Put -> 'BASE_URL/:id', should return status code 200, res.body to be defined  and res.body.userName === 'Daniela'", async () => {
     const res = await request(app)
         .put(`${BASE_URL}/${userId}`)
@@ -72,7 +81,11 @@ test("Put -> 'BASE_URL/:id', should return status code 200, res.body to be defin
     expect(res.body.userName).toBe("Daniela")
 })
 
-test("Post -> 'BASE_URL/login', should return status code 200, and res.body to be defined and res.body.email === user.email,  res.body.token to be denined", async () => {
+
+// Test para hacer login con el usuario creado
+// Verifica que devuelva el email correcto y un token válido
+test(`Post -> 'BASE_URL/login', should return status code 200, and res.body to be defined 
+    and res.body.email === user.email,  res.body.token to be denined`, async () => {
 
     const userLogin = {
         email: 'alejandro@gmail.com',
@@ -91,6 +104,8 @@ test("Post -> 'BASE_URL/login', should return status code 200, and res.body to b
 })
 
 
+// Test para login con contraseña incorrecta
+// Verifica que devuelva error 401
 test("POST -> 'URL_BASE/login', should return status code 401", async () => {
     const userLogin = {
       email: 'alejandro@gmail.com',
@@ -103,7 +118,10 @@ test("POST -> 'URL_BASE/login', should return status code 401", async () => {
   
     expect(res.statusCode).toBe(401)
   })
+ 
 
+// Test para eliminar el usuario creado
+// Verifica que la eliminación sea correcta (204)
   test("Delete -> 'URL_BASE/:id', should return status code 204", async () => {
     const res = await request(app)
       .delete(`${BASE_URL}/${userId}`)

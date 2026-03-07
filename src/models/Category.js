@@ -1,4 +1,5 @@
 // Modelo "Category": define una tabla con un solo campo obligatorio y único (name)
+// importaciones
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
 

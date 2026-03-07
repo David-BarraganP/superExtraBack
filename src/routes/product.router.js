@@ -19,3 +19,4 @@ routerProduct.route('/:id')
     .put(verifyJwt, update);
 
 module.exports = routerProduct;
+   

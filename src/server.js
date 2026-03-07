@@ -1,6 +1,9 @@
 // Punto de entrada principal: inicia la BD y levanta el servidor
+// impotaciones
+// Importa todos los modelos para que Sequelize los registre
 const app = require('./app');
 const sequelize = require('./utils/connection');
+
 require("./models")
 
 const PORT = process.env.PORT || 8080;

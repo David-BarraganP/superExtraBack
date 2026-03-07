@@ -1,3 +1,4 @@
+// importaciones
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
 const bcrypt = require('bcrypt')
