@@ -1,17 +1,17 @@
+
 // Punto de entrada principal: inicia la BD y levanta el servidor
 // impotaciones
 // Importa todos los modelos para que Sequelize los registre
 const app = require('./app');
 const sequelize = require('./utils/connection');
-
-require("./models")
+require('./models')
 
 const PORT = process.env.PORT || 8080;
 
 const main = async () => {
     try {
         // Sincroniza los modelos con la base de datos
-        sequelize.sync();
+        await sequelize.sync();  
         console.log("DB connected");
 
         // Inicia el servidor en el puerto configurado
@@ -24,4 +24,6 @@ const main = async () => {
 }
 
 main();
+
+
 
