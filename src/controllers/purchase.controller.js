@@ -11,7 +11,6 @@ const getAll = catchError(async(req, res) => {
     const userId = req.user.id
     const result = await Purchase.findAll({
         where: {userId},
-        attributes: { exclude: ["userId", "productId"] },
         include: [
             {          
                 model: User,
