@@ -2,6 +2,7 @@
 const { getAll, create, getOne, remove, update, setImages } = require('../controllers/product.controller');
 const express = require('express');
 const { verifyJwt } = require('../utils/verifyJWT');
+const { verifyAdmin } = require('../utils/verifyAdmin');
 
 const routerProduct = express.Router();
 
@@ -9,18 +10,18 @@ const routerProduct = express.Router();
 // La creación requiere autenticación
 routerProduct.route('/')
     .get(getAll)
-    .post(verifyJwt, create);
+    .post(verifyJwt, verifyAdmin, create);
 
 // ruta para setear las imagenes
 routerProduct.route('/:id/images')
-    .post(verifyJwt, setImages)
+    .post(verifyJwt, verifyAdmin, setImages)
 
 // Rutas para manejar un producto individual (ID)
 // Obtener, eliminar o actualizar; las últimas dos requieren autenticación
 routerProduct.route('/:id')
     .get(getOne)
-    .delete(verifyJwt, remove)
-    .put(verifyJwt, update);
+    .delete(verifyJwt, verifyAdmin, remove)
+    .put(verifyJwt, verifyAdmin, update);
 
 module.exports = routerProduct;
    
