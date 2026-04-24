@@ -4,7 +4,7 @@ const catchError = require('../utils/catchError');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const ProductImg = require('../models/ProductImg');
-// const ProductImg = require('../models/ProductImg');
+
 
 const getAll = catchError(async(req, res) => {
 
@@ -54,7 +54,7 @@ const update = catchError(async(req, res) => {
     return res.json(result[1][0]);
 });
 
-// Código futuro: asignar imágenes al producto
+//  asignar imágenes al producto
 const setImages = catchError(async(req, res) =>{
     const {id} = req.params
     const product = await Product.findByPk(id)

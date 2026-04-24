@@ -4,6 +4,7 @@ const Cart = require('../models/Cart');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const ProductImg = require('../models/ProductImg');
+const Size = require('../models/Size');
 
 
 
@@ -25,6 +26,10 @@ const getAll = catchError(async(req, res) => {
                 },
                 {
                     model: ProductImg
+                },
+                                {
+                    model: Size, 
+                    attributes: ['id', 'size', 'stock'] 
                 }
             ]
             }
@@ -49,6 +54,10 @@ const getOne = catchError(async(req, res) => {
                 },
                 {
                      model: ProductImg
+                },
+                {
+                    model: Size, 
+                    attributes: ['id', 'size', 'stock']  
                 }
             ]
             }
@@ -62,8 +71,8 @@ const getOne = catchError(async(req, res) => {
 const create = catchError(async(req, res) => {
 
     const userId = req.user.id
-    const { quantity, productId} = req.body
-    const newBody = {userId, quantity, productId}
+    const { quantity, productId, sizeId} = req.body
+    const newBody = {userId, quantity, productId, sizeId}
     const result = await Cart.create(newBody);
     return res.status(201).json(result);
 });
