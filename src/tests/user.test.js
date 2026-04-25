@@ -15,7 +15,7 @@ const user = {
     userName: 'Alejandro',
     email: 'alejandro@gmail.com',
     password: 'alejandro1234',
-    rol: 'colaborador'
+    rol: 'client'
 }
 
 // Se ejecuta antes de todos los tests
