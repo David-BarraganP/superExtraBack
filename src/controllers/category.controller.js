@@ -1,7 +1,7 @@
 // Controlador para gestionar categorías: obtener todas, crear y eliminar
 // importaciones
 const catchError = require('../utils/catchError');
-const Category = require('../models/Category');
+const { Category } = require('../models');
 
 // Obtiene todas las categorías
 const getAll = catchError(async (req, res) => {

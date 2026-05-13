@@ -1,7 +1,8 @@
 require('../models')
 const request = require('supertest')
 const app = require('../app')
-const Product = require('../models/Product')
+const { Product } = require('../models')
+
 
 
 

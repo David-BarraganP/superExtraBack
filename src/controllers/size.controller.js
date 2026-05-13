@@ -1,5 +1,5 @@
 const catchError = require('../utils/catchError');
-const Size = require('../models/Size');
+const { Size } = require('../models');
 
 // Obtener todas las tallas de un producto
 const getAll = catchError(async(req, res) => {

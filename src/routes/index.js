@@ -8,6 +8,7 @@ const routerProductImg = require('./productImg.router');
 const { verifyJwt } = require('../utils/verifyJWT');
 const { verifyAdmin } = require('../utils/verifyAdmin');
 const routerSize = require('./size.router');
+const routerOrder = require('./order.router');
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ router.use('/categories',routerCategory)
 router.use('/cart', verifyJwt,  routerCart) // rutas protegidas
 router.use('/purchase', verifyJwt, routerPurchase)
 router.use('/product_images', verifyJwt, verifyAdmin, routerProductImg)
-
+router.use('/orders', routerOrder)
 
 
 module.exports = router;

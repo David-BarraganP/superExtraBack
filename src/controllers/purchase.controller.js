@@ -1,12 +1,5 @@
 const catchError = require('../utils/catchError');
-const Purchase = require('../models/Purchase');
-const Cart = require('../models/Cart');
-const Product = require('../models/Product');
-const Category = require('../models/Category');
-const User = require('../models/User');
-const ProductImg = require('../models/ProductImg');
-const Size = require('../models/Size');
-
+const { Purchase, Cart, Product, Category, User, ProductImg, Size } = require('../models');
 
 const getAll = catchError(async(req, res) => {
     const userId = req.user.id

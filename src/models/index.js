@@ -6,6 +6,7 @@ const Cart = require("./Cart");
 const Purchase = require("./Purchase");
 const ProductImg = require("./ProductImg");
 const Size = require("./Size")
+const Order = require('./Order')
 
 // product -> categoryId
 // a product le agregamos categoryId
@@ -39,3 +40,19 @@ Product.hasMany(Size)
 // Cart -> sizeId
 Cart.belongsTo(Size)
 Size.hasMany(Cart)
+
+// Order -> userId
+Order.belongsTo(User)
+User.hasMany(Order)
+
+
+module.exports = {
+    User,
+    Category,
+    Product,
+    Cart,
+    Purchase,
+    ProductImg,
+    Size,
+    Order
+}

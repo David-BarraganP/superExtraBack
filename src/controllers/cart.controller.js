@@ -1,10 +1,6 @@
 //importaciones
 const catchError = require('../utils/catchError');
-const Cart = require('../models/Cart');
-const Product = require('../models/Product');
-const Category = require('../models/Category');
-const ProductImg = require('../models/ProductImg');
-const Size = require('../models/Size');
+const { Cart, Product, Category, ProductImg, Size } = require('../models');
 
 
 
