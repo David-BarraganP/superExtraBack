@@ -40,7 +40,6 @@ beforeAll(async () => {
         quantity: 1
     })
 
-
 })
 
 test("POST -> 'BASE_URL', should return status code 201, res.body to be defined, res.body.status === 'pending'", async () => {
